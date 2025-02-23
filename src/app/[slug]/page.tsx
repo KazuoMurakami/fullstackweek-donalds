@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 import { getRestaurantBySlug } from '../data/get-restaurant-by-slug'
-import Menucard from './_components/card-menu'
+import ConsumptionMethodOption from './_components/consumption-method'
 
 interface RestaurantPageProps {
   params: Promise<{ slug: string }>
@@ -33,15 +33,19 @@ const restaurantPage = async ({ params }: RestaurantPageProps) => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 pt-14">
-        <Menucard
+        <ConsumptionMethodOption
           srcImg="/dine_in.svg"
           altImg="Para comer aqui"
           text="Para comer aqui"
+          option="DINE_IN"
+          slug={slug}
         />
-        <Menucard
+        <ConsumptionMethodOption
           srcImg="/take_away.svg"
           altImg="Para levar"
           text="Para levar"
+          option="TAKEAWAY"
+          slug={slug}
         />
       </div>
     </div>
